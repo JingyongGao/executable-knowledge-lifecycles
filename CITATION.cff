@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software or its evidence package, please cite this release."
+title: "Executable Knowledge Lifecycles as Dynamical Control in Agent Systems"
+type: software
+authors:
+  - family-names: Gao
+    given-names: Yongjing
+version: "0.2.6-exp.1-final"
+date-released: 2026-07-14
+repository-code: "https://github.com/JingyongGao/executable-knowledge-lifecycles"
+url: "https://github.com/JingyongGao/executable-knowledge-lifecycles/releases/tag/v0.2.6-exp.1-final"
+license: Apache-2.0
+abstract: >-
+  A typed, model-external compilation and validation boundary for executable
+  causal claims, evaluated in synthetic causal environments with adversarial
+  compilation, conformance, sensitivity, and activation fault tests.
+keywords:
+  - agent systems
+  - executable knowledge
+  - typed compilation
+  - causal regularization
+  - reproducibility

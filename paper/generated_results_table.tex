@@ -1,0 +1,21 @@
+% Generated; do not edit by hand.
+\begin{table*}[t]
+\centering
+\caption{Executable-knowledge outcomes. $\Delta E_{\mathrm{OOD}}$ is absolute shortcut-intervention error reduction; $R_{\mathrm{OOD}}$ is its normalized counterpart. Predictive OOD MSE remains separately available in the artifact.}
+\label{tab:execution}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+Condition & $\Delta E_{\mathrm{OOD}}$ & $R_{\mathrm{OOD}}$ & $E_{\mathrm{inv}}$ & $E_{\mathrm{sens}}$ & $C_{\mathrm{train}}$ & $C_{\mathrm{infer}}$ \\
+\midrule
+No K & 0.0000 & 0.0000 & 1.6330 & 1.0392 & 1.0000 & 1.0000 \\
+Correct K & 1.6330 & 1.0000 & 6.35e-08 & 0.0008 & 1.8788 & 1.0000 \\
+Wrong K & -4.1422 & -2.5365 & 5.7751 & 2.0116 & 1.6949 & 1.0000 \\
+Partial K & 1.3570 & 0.8310 & 0.2760 & 0.3924 & 1.6480 & 1.0000 \\
+Stale K & 0.0000 & 0.0000 & 1.6330 & 1.0392 & 1.0032 & 1.0000 \\
+Stale K, fault-injected active & -5.2758 & -3.2308 & 6.9088 & 2.0079 & 1.8925 & 1.0000 \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}

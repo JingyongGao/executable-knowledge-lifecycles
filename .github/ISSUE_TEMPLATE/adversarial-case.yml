@@ -1,0 +1,34 @@
+name: Adversarial semantic case
+description: Propose a grounded compiler case with frozen Gold IR.
+title: "[case] "
+labels: ["benchmark"]
+body:
+  - type: textarea
+    id: input
+    attributes:
+      label: Natural-language input
+    validations:
+      required: true
+  - type: textarea
+    id: gold
+    attributes:
+      label: Frozen Gold IR
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: threat
+    attributes:
+      label: Threat and grounding rationale
+      description: Explain the target failure and how each executable field is grounded.
+    validations:
+      required: true
+  - type: dropdown
+    id: independence
+    attributes:
+      label: Semantic independence
+      options:
+        - Independent semantic case
+        - Transformation of an existing case
+    validations:
+      required: true

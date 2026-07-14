@@ -1,0 +1,118 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[margin=0.78in]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else
+  \usepackage{fontspec}
+\fi
+\usepackage{amsmath,amssymb,booktabs,graphicx,microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Executable Knowledge Lifecycles as Dynamical Control in Agent Systems: A Typed-Compilation Study in Synthetic Causal Environments},
+  pdfauthor={Yongjing Gao},
+  pdfsubject={v0.2.6-exp.1-final empirical short paper},
+  pdfkeywords={agent systems, executable knowledge, typed compilation, causal regularization, reproducibility}
+}
+\usepackage{xcolor}
+\emergencystretch=1.5em
+\makeatletter
+\setlength{\@dblfptop}{0pt}
+\setlength{\@dblfpsep}{18pt plus 2pt minus 2pt}
+\setlength{\@dblfpbot}{0pt plus 1fil}
+\makeatother
+\input{generated_metrics.tex}
+
+\title{Executable Knowledge Lifecycles as Dynamical Control in Agent Systems:\\
+A Typed-Compilation Study in Synthetic Causal Environments}
+\author{Yongjing Gao}
+\date{v0.2.6-exp.1-final}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In a synthetic causal environment, a model-external typed compiler separates candidate knowledge from trusted knowledge. Compiler output is constrained to an unscored \texttt{CANDIDATE}; only an epistemic validation plane may assign continuous confidence and admit execution. Across controlled interventions, executing correct knowledge improves robustness, executing incorrect knowledge causes directional harm, and isolating expired knowledge has no effect. Forced activation of expired knowledge restores the harm. These results support a narrow systems claim: an executable knowledge lifecycle acts as a dynamical control structure in an agent system. They do not establish causal discovery or broad real-world validity. The semantic study contains \UniqueCases{} unique cases (\CoreCases{} preregistered core cases and \ExtensionCases{} cross-domain extensions) and \TotalEvents{} decoding events; decode repetitions are reported as repetitions, not independent semantic samples.
+\end{abstract}
+
+\section{Problem Statement}
+Agent systems commonly pass natural-language ``knowledge'' directly into planning or learning components. This collapses parsing, validation, admission, activation, and execution into one probabilistic channel. We study a stricter lifecycle:
+\begin{equation}
+K_{\mathrm{NL}} \xrightarrow{\text{compile}} K_{\mathrm{IR}}^{\mathrm{candidate}}
+\xrightarrow{\text{validate}} K_{\mathrm{IR}}^{\mathrm{trusted}}
+\xrightarrow{\text{activate}} \mathcal{L}(K).
+\end{equation}
+The central question is not whether a language model ``knows'' a causal fact. It is whether system boundaries cause correct, wrong, stale, and adversarially injected knowledge to produce distinguishable and auditable dynamics.
+
+\section{System and Threat Model}
+The compiler emits one JSON object conforming to a Draft-07 causal-claim schema. Markdown, missing fields, unknown fields, invalid control metadata, and prefixed or suffixed prose fail outside the model. Governance metadata is sealed as \texttt{status=CANDIDATE} and \texttt{claim\_confidence=null}. An epistemic data plane alone converts lineage count, sample size, and consistency into a numeric confidence.
+
+We separate two hashes. \emph{SemanticHash} covers cause, effect, scope, time window, intervention, and effect specification. \emph{EnvelopeHash} covers identifier, version, status, provenance, and confidence. This prevents governance serialization from being confused with executable causal semantics.
+
+The threat model includes causal-direction inversion, temporal drift, indirect prompt injection, hallucinated provenance, conflicting claims, expired-claim activation bypass, and ungrounded defaults induced by long-context distractors.
+
+\section{Executable Causal Regularization}
+For model $f_\theta$, active claim $K$, non-causal feature set $N(K)$, and validated confidence $c_K$, training minimizes
+\begin{equation}
+\mathcal{L}(K)=\mathcal{L}_{\mathrm{task}}+\lambda\,\mathbf{1}[K\ \mathrm{active}]\,c_K
+\,\mathbb{E}_x\!\left[\sum_{j\in N(K)}\left\|\frac{\partial f_\theta(x)}{\partial x_j}\right\|_2^2\right].
+\end{equation}
+The synthetic environment contains one structural feature $X_1$ and two training-environment shortcuts $X_2,X_3$. Shortcut correlations reverse out of distribution.
+
+We define $E_{\mathrm{OOD}}$ operationally as the held-out shortcut-intervention MSE with $X_1$ fixed. It is the same raw observation reported as $E_{\mathrm{inv}}$; it is not a general-purpose measure of distribution shift. We report
+\begin{align}
+\Delta E_{\mathrm{OOD}} &= E_{\mathrm{base}}-E_K,\\
+R_{\mathrm{OOD}} &= \frac{\Delta E_{\mathrm{OOD}}}{E_{\mathrm{base}}+10^{-12}}.
+\end{align}
+Raw predictive OOD MSE is retained separately.
+
+\section{Experiments}
+\paragraph{Typed compilation (1A).}
+The core cohort has \CoreCases{} handcrafted semantic cases with \CoreReplicates{} decode replicates each. The extension adds \ExtensionCases{} cases across quantitative trading, advertising technology, clinical and industrial safety, supply chain, cybersecurity, energy, manufacturing, credit, logistics, agriculture, recommendation, telecommunications, education technology, and insurance, with \ExtensionReplicates{} replicates per case. Thus \TotalEvents{} events do not imply \TotalEvents{} independent semantic cases.
+
+We preregister a \emph{severe semantic error} as any decoding event that reverses causal direction, changes required temporal or intervention semantics, fabricates protected provenance, violates frozen governance metadata, or disagrees with Gold IR on a required executable field.
+
+\paragraph{Execution conformance (1B).}
+Compiled natural language and native Gold IR are compared by SemanticHash and EnvelopeHash. When semantic hashes match, downstream $(E_{\mathrm{inv}},E_{\mathrm{sens}})$ must be exactly equal.
+
+\paragraph{Knowledge execution (1C).}
+No-K, correct, wrong, partial, stale, and fault-activated stale conditions share data, initialization, and decoding seeds.
+
+\paragraph{Stress tests.}
+We scan the preregistered grids
+\begin{align*}
+\lambda &\in \{0,.01,.03,.1,.3,1,3,10\},\\
+c_K &\in \{.001,.005,.01,.025,.05,.1,.2\}.
+\end{align*}
+Every point uses 30 paired seeds and a paired Student-$t$ 95\% interval. Lambda is selected on validation MSE without inspecting held-out OOD outcomes.
+
+\section{Results}
+The direct natural-language path has a severe semantic error rate of \DirectErrorPct{} overall (\CoreDirectErrorPct{} in the core cohort and \ExtensionDirectErrorPct{} in the extension), while typed compilation has \TypedErrorPct{}. SemanticHash agreement is \SemanticMatchPct{} (\SemanticMatches{}/\TotalEvents{}), and EnvelopeHash agreement is \EnvelopeMatchPct{}. These are system-level results: deterministic source anchors and model-external normalization are part of the compiler and should not be interpreted as raw language-model accuracy.
+
+\input{generated_results_table.tex}
+\input{generated_release.tex}
+
+As shown in Table~\ref{tab:execution}, correct knowledge removes nearly all shortcut-intervention sensitivity. Wrong knowledge amplifies error in the opposite direction. Partial knowledge produces an intermediate outcome. Inactive stale knowledge is exactly equivalent to No-K under shared initialization, while activation bypass produces material harm. Low-confidence wrong knowledge remains harmful but its mean harm increases monotonically with confidence. Table~\ref{tab:evidence}, Panel A reports the manually authored domain labels.
+
+\section{Limitations and Validity}
+The execution environment is synthetic, linear, and deliberately small. The cross-domain cases broaden vocabulary and business context, but they remain manually authored templates with explicit variable labels. Decode replicates measure stochastic stability, not population-level semantic diversity. The benchmark evaluates compilation fidelity against frozen Gold IR; it does not validate the truth of those claims. $E_{\mathrm{OOD}}\approx E_{\mathrm{inv}}$ is an operational identity in this experiment, not evidence that invariance universally measures OOD generalization. Confidence scoring is a reference control law rather than a calibrated empirical estimator. No clinical, financial, or safety deployment claim follows from these results.
+
+\section{Reproducibility and Provenance}
+Schemas, compiler, loss operator, frozen cases, seeds, raw metrics, confidence intervals, and failure flags are versioned together. Paper tables are generated directly from JSON artifacts. The compilation artifact records case counts and decode-replicate counts separately. All model inference was local; untrusted raw generations are not persisted in the formal artifact.
+
+Table~\ref{tab:evidence}, Panel B gives the release locator state and the deterministic evidence bundle. The current freeze is not a Git worktree, so repository URL, tag, and commit remain explicitly unavailable unless injected by the publishing environment; no synthetic locator is substituted.
+
+\section{Conclusion}
+Within the stated synthetic scope, the evidence supports a control-structure interpretation of executable knowledge. Correct execution improves behavior; wrong execution damages it; lifecycle isolation prevents stale knowledge from acting; bypassing isolation restores harm. The engineering result is the separation of probabilistic parsing from deterministic admission and activation, not a claim of autonomous causal understanding.
+
+\begin{thebibliography}{9}
+\bibitem{pearl2009}
+J. Pearl, \emph{Causality: Models, Reasoning, and Inference}, 2nd ed., Cambridge University Press, 2009.
+\bibitem{peters2017}
+J. Peters, D. Janzing, and B. Sch\"olkopf, \emph{Elements of Causal Inference}, MIT Press, 2017.
+\bibitem{arjovsky2019}
+M. Arjovsky et al., ``Invariant Risk Minimization,'' arXiv:1907.02893, 2019.
+\end{thebibliography}
+
+\end{document}

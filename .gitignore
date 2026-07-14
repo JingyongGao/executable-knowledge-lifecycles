@@ -1,0 +1,17 @@
+.venv/
+.DS_Store
+__pycache__/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.pdf
+!paper/main.pdf
+paper/report.html
+paper/main.preview.pdf
+paper/main.preview.log
+.venv_clean/
+tmp/

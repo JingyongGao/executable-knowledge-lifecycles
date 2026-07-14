@@ -1,0 +1,12 @@
+# Release-build dependencies for scripts/reproduce_and_compile.sh.
+# Local source is loaded read-only through PYTHONPATH by the release script, so
+# reproduction does not depend on a package-index copy of Hatchling.
+# The remaining packages support tests, PDF fallback, and PDF inspection.
+jsonschema[format]>=4.21,<5
+numpy>=1.26,<3
+torch>=2.2
+pytest>=8,<10
+weasyprint>=62,<70
+reportlab>=4.2,<5
+pypdf>=5,<7
+pymupdf>=1.24,<2

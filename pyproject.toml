@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-system-dynamics"
+version = "0.2.6"
+description = "Executable core of the v0.2.6-exp.1-final agent system dynamics specification"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "jsonschema[format]>=4.21",
+  "numpy>=1.26",
+  "torch>=2.2",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8.0",
+]
+
+[project.scripts]
+run-1a-1b-metrics = "agent_dynamics.compilation_metrics:main"
+run-1c-experiment = "agent_dynamics.experiment:main"
+run-parameter-stress = "agent_dynamics.stress_test:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_dynamics"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]

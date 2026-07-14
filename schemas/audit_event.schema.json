@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RawEventLedgerEntry",
+  "type": "object",
+  "properties": {
+    "event_id": { "type": "string", "format": "uuid" },
+    "actor": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "source": { "type": "string" },
+    "payload_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "size_bytes": { "type": "integer", "minimum": 0 },
+    "content_type": { "type": "string" },
+    "parse_status": {
+      "type": "string",
+      "enum": ["PENDING", "PARSED", "PARSE_FAILED", "QUARANTINED"]
+    }
+  },
+  "required": [
+    "event_id",
+    "actor",
+    "timestamp",
+    "source",
+    "payload_hash",
+    "size_bytes",
+    "parse_status"
+  ]
+}

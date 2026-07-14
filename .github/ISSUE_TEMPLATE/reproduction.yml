@@ -1,0 +1,31 @@
+name: Reproduction report
+description: Report a clean reproduction result or deterministic mismatch.
+title: "[reproduction] "
+labels: ["reproduction"]
+body:
+  - type: input
+    id: commit
+    attributes:
+      label: Commit or release tag
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, architecture, Python, TeX engine, and model endpoint type.
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Exact command
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Result, hashes, and minimal log excerpt
+    validations:
+      required: true
