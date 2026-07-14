@@ -2,6 +2,7 @@
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
 [![Release](https://img.shields.io/badge/release-v0.2.6--exp.1--final-2f6f9f.svg)](https://github.com/JingyongGao/executable-knowledge-lifecycles/releases/tag/v0.2.6-exp.1-final)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21361204.svg)](https://doi.org/10.5281/zenodo.21361204)
 
 This repository is the executable evidence package for a narrow systems claim:
 in a synthetic causal environment, a model-external typed compiler can separate
@@ -30,6 +31,8 @@ population estimates. Exact machine-readable values and definitions live in
 
 ## Evidence and reproducibility
 
+- Permanent Zenodo archive (this release): [10.5281/zenodo.21361204](https://doi.org/10.5281/zenodo.21361204)
+- Zenodo concept DOI (all versions): [10.5281/zenodo.21361203](https://doi.org/10.5281/zenodo.21361203)
 - Paper: [`paper/main.pdf`](paper/main.pdf)
 - Typed-compilation metrics: [`artifacts/1a_1b_metrics.json`](artifacts/1a_1b_metrics.json)
 - Execution metrics: [`artifacts/1c_evaluation.json`](artifacts/1c_evaluation.json)
