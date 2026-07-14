@@ -4,11 +4,11 @@
   "canonical_manuscript": "paper/main.tex",
   "canonical_pdf": "paper/main.pdf",
   "source_control": {
-    "status": "local_freeze_only",
-    "repository_url": "git@github.com:JingyongGao/executable-knowledge-lifecycles.git",
-    "commit_hash": null,
-    "release_tag": null,
-    "external_bundle_url": null
+    "status": "externally_locatable",
+    "repository_url": "https://github.com/JingyongGao/executable-knowledge-lifecycles",
+    "commit_hash": "f0af2dd36dd2080cd59df8becb1c10d6f1c6da60",
+    "release_tag": "v0.2.6-exp.1-final",
+    "external_bundle_url": "https://github.com/JingyongGao/executable-knowledge-lifecycles/releases/download/v0.2.6-exp.1-final/v0.2.6-exp.1-final-evidence.zip"
   },
   "bundle": {
     "path": "artifacts/v0.2.6-exp.1-final-evidence.zip",
