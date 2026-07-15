@@ -1,0 +1,204 @@
+{
+  "spec_version": "v0.2.6-exp.1-final",
+  "seeds": {
+    "seed_data": 104729,
+    "seed_model": 130363,
+    "seed_decode": 155921
+  },
+  "timing_repeats": 3,
+  "metric_definitions": {
+    "e_ood_raw": "held-out shortcut-intervention MSE with X1 fixed; same raw observation as e_inv",
+    "delta_e_ood_absolute": "e_ood_base_raw - e_ood_group_raw; unbounded below",
+    "r_ood_relative_improvement": "delta_e_ood_absolute / (e_ood_base_raw + 1e-12); upper-bounded by 1",
+    "predictive_ood_mse_raw": "held-out label prediction MSE; retained separately and never used in delta_e_ood",
+    "e_inv": "alias of e_ood_group_raw; lower is better",
+    "e_sens": "absolute error of dŷ/dX1 from the structural slope; lower is better",
+    "c_train_ratio": "median group training wall time divided by No-K wall time",
+    "c_infer_ratio": "forward-pass graph cost divided by No-K; identical architecture gives 1"
+  },
+  "headline_correct_k": {
+    "e_ood_base_raw": 1.6329936981201172,
+    "e_ood_group_correct_k_raw": 6.353416637239206e-08,
+    "delta_e_ood_absolute": 1.6329936345859508,
+    "r_ood_relative_improvement": 0.9999999610928282,
+    "c_train_ratio": 1.8787562461649783,
+    "c_infer_ratio": 1.0
+  },
+  "results": [
+    {
+      "group": "Group 0 (No K)",
+      "lambda_reg": 0.0,
+      "claim_meta": {
+        "non_causal_indices": [],
+        "is_active": false
+      },
+      "wall_seconds": 0.02479749999474734,
+      "ood_mse": 3.8300702571868896,
+      "invariance_error": 1.6329936981201172,
+      "sensitivity_error": 1.039240837097168,
+      "feature_gradients": [
+        0.9838831424713135,
+        0.840571939945221,
+        0.20713724195957184
+      ],
+      "evaluation_vector": {
+        "e_ood_base_raw": 1.6329936981201172,
+        "e_ood_group_raw": 1.6329936981201172,
+        "delta_e_ood_absolute": 0.0,
+        "r_ood_relative_improvement": 0.0,
+        "e_inv": 1.6329936981201172,
+        "e_sens": 1.039240837097168,
+        "c_train_ratio": 1.0,
+        "c_infer_ratio": 1.0
+      }
+    },
+    {
+      "group": "Group 1 (Correct K)",
+      "lambda_reg": 4.0,
+      "claim_meta": {
+        "non_causal_indices": [
+          1,
+          2
+        ],
+        "is_active": true
+      },
+      "wall_seconds": 0.046588458004407585,
+      "ood_mse": 0.015115885995328426,
+      "invariance_error": 6.353416637239206e-08,
+      "sensitivity_error": 0.0008015632629394531,
+      "feature_gradients": [
+        2.023925542831421,
+        -1.5042605809867382e-05,
+        -0.00017934205243363976
+      ],
+      "evaluation_vector": {
+        "e_ood_base_raw": 1.6329936981201172,
+        "e_ood_group_raw": 6.353416637239206e-08,
+        "delta_e_ood_absolute": 1.6329936345859508,
+        "r_ood_relative_improvement": 0.9999999610928282,
+        "e_inv": 6.353416637239206e-08,
+        "e_sens": 0.0008015632629394531,
+        "c_train_ratio": 1.8787562461649783,
+        "c_infer_ratio": 1.0
+      }
+    },
+    {
+      "group": "Group 2 (Wrong K)",
+      "lambda_reg": 4.0,
+      "claim_meta": {
+        "non_causal_indices": [
+          0
+        ],
+        "is_active": true
+      },
+      "wall_seconds": 0.04202995804371312,
+      "ood_mse": 14.20492172241211,
+      "invariance_error": 5.775146484375,
+      "sensitivity_error": 2.0115741724148393,
+      "feature_gradients": [
+        0.011549807153642178,
+        1.4857321977615356,
+        0.5276612639427185
+      ],
+      "evaluation_vector": {
+        "e_ood_base_raw": 1.6329936981201172,
+        "e_ood_group_raw": 5.775146484375,
+        "delta_e_ood_absolute": -4.142152786254883,
+        "r_ood_relative_improvement": -2.536539357757928,
+        "e_inv": 5.775146484375,
+        "e_sens": 2.0115741724148393,
+        "c_train_ratio": 1.6949272326894242,
+        "c_infer_ratio": 1.0
+      }
+    },
+    {
+      "group": "Group 3 (Partial K)",
+      "lambda_reg": 4.0,
+      "claim_meta": {
+        "non_causal_indices": [
+          1
+        ],
+        "is_active": true
+      },
+      "wall_seconds": 0.04086691699922085,
+      "ood_mse": 0.5393426418304443,
+      "invariance_error": 0.2759785056114197,
+      "sensitivity_error": 0.39242076873779297,
+      "feature_gradients": [
+        1.6307032108306885,
+        0.004867400508373976,
+        0.38717037439346313
+      ],
+      "evaluation_vector": {
+        "e_ood_base_raw": 1.6329936981201172,
+        "e_ood_group_raw": 0.2759785056114197,
+        "delta_e_ood_absolute": 1.3570151925086975,
+        "r_ood_relative_improvement": 0.8309984258175926,
+        "e_inv": 0.2759785056114197,
+        "e_sens": 0.39242076873779297,
+        "c_train_ratio": 1.6480256883910622,
+        "c_infer_ratio": 1.0
+      }
+    },
+    {
+      "group": "Group 4 (Stale K)",
+      "lambda_reg": 4.0,
+      "claim_meta": {
+        "non_causal_indices": [
+          1,
+          2
+        ],
+        "is_active": false
+      },
+      "wall_seconds": 0.024877124989870936,
+      "ood_mse": 3.8300702571868896,
+      "invariance_error": 1.6329936981201172,
+      "sensitivity_error": 1.039240837097168,
+      "feature_gradients": [
+        0.9838831424713135,
+        0.840571939945221,
+        0.20713724195957184
+      ],
+      "evaluation_vector": {
+        "e_ood_base_raw": 1.6329936981201172,
+        "e_ood_group_raw": 1.6329936981201172,
+        "delta_e_ood_absolute": 0.0,
+        "r_ood_relative_improvement": 0.0,
+        "e_inv": 1.6329936981201172,
+        "e_sens": 1.039240837097168,
+        "c_train_ratio": 1.003211008978343,
+        "c_infer_ratio": 1.0
+      }
+    },
+    {
+      "group": "Group 5 (Stale K, fault-injected active)",
+      "lambda_reg": 4.0,
+      "claim_meta": {
+        "non_causal_indices": [
+          0,
+          2
+        ],
+        "is_active": true
+      },
+      "wall_seconds": 0.046929624979384243,
+      "ood_mse": 14.126823425292969,
+      "invariance_error": 6.908834457397461,
+      "sensitivity_error": 2.0078989220783114,
+      "feature_gradients": [
+        0.015225057490170002,
+        1.9633798599243164,
+        0.01510866079479456
+      ],
+      "evaluation_vector": {
+        "e_ood_base_raw": 1.6329936981201172,
+        "e_ood_group_raw": 6.908834457397461,
+        "delta_e_ood_absolute": -5.275840759277344,
+        "r_ood_relative_improvement": -3.23077839513257,
+        "e_inv": 6.908834457397461,
+        "e_sens": 2.0078989220783114,
+        "c_train_ratio": 1.8925143659370895,
+        "c_infer_ratio": 1.0
+      }
+    }
+  ]
+}

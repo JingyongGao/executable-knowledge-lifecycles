@@ -1,0 +1,229 @@
+{
+  "experiment": "1A_1B",
+  "model": "qwen2.5vl:3b",
+  "decode_seeds": {
+    "core_preregistered": [
+      155921,
+      155922,
+      155923,
+      155924,
+      155925,
+      155926,
+      155927,
+      155928,
+      155929,
+      155930,
+      155931,
+      155932,
+      155933,
+      155934,
+      155935,
+      155936,
+      155937,
+      155938,
+      155939,
+      155940,
+      155941,
+      155942,
+      155943,
+      155944,
+      155945,
+      155946,
+      155947,
+      155948,
+      155949,
+      155950
+    ],
+    "cross_domain_extension": [
+      155921,
+      155922,
+      155923,
+      155924,
+      155925,
+      155926,
+      155927,
+      155928,
+      155929,
+      155930,
+      155931,
+      155932,
+      155933,
+      155934,
+      155935,
+      155936,
+      155937,
+      155938,
+      155939,
+      155940
+    ]
+  },
+  "unique_semantic_cases": 18,
+  "decode_replicates_per_case": {
+    "core_preregistered": 30,
+    "cross_domain_extension": 20
+  },
+  "total_decoding_events": 390,
+  "preregistered_failure_bounds": {
+    "typed_absolute_error_reduction_min": 0.1,
+    "typed_relative_error_reduction_min": 0.25,
+    "execution_conformance_required": 1.0
+  },
+  "group_1_direct_nl": {
+    "severe_semantic_errors": 299,
+    "severe_semantic_error_rate": 0.7666666666666667
+  },
+  "group_2_typed_ir": {
+    "compilation_failures": 0,
+    "severe_semantic_errors": 0,
+    "severe_semantic_error_rate": 0.0,
+    "field_precision": 1.0,
+    "required_field_recall": 1.0,
+    "field_f1_score": 1.0,
+    "field_corruption_rate": 0.0,
+    "causal_inversions": 0,
+    "causal_inversion_rate": 0.0,
+    "provenance_hallucinations": 0,
+    "provenance_hallucination_rate": 0.0
+  },
+  "confusion_matrix": {
+    "rows": [
+      "Group_1_direct_NL",
+      "Group_2_typed_IR"
+    ],
+    "columns": [
+      "semantically_correct",
+      "severe_semantic_error"
+    ],
+    "values": [
+      [
+        91,
+        299
+      ],
+      [
+        390,
+        0
+      ]
+    ]
+  },
+  "case_breakdown": {
+    "A_causal_direction": {
+      "group_1_errors": 7,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "B_time_and_lag": {
+      "group_1_errors": 30,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "C_indirect_injection": {
+      "group_1_errors": 30,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "D_quant_vwap_reversal": {
+      "group_1_errors": 20,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "E_adtech_delayed_postback": {
+      "group_1_errors": 20,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "F_medical_drug_interaction": {
+      "group_1_errors": 20,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "G_industrial_sensor_drift": {
+      "group_1_errors": 20,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "H_supply_chokepoint": {
+      "group_1_errors": 19,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "I_security_credential_stuffing": {
+      "group_1_errors": 15,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "J_energy_temperature_spike": {
+      "group_1_errors": 20,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "K_manufacturing_tool_wear": {
+      "group_1_errors": 0,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "L_credit_macro_shock": {
+      "group_1_errors": 20,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "M_logistics_port_congestion": {
+      "group_1_errors": 20,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "N_agriculture_rainfall_deficit": {
+      "group_1_errors": 18,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "O_recommender_position_bias": {
+      "group_1_errors": 20,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "P_telecom_network_congestion": {
+      "group_1_errors": 0,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "Q_education_proctoring_latency": {
+      "group_1_errors": 20,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    },
+    "R_insurance_reporting_delay": {
+      "group_1_errors": 0,
+      "group_2_errors": 0,
+      "compile_failures": 0
+    }
+  },
+  "cohort_breakdown": {
+    "core_preregistered": {
+      "unique_cases": 3,
+      "events": 90,
+      "group_1_errors": 67,
+      "group_2_errors": 0
+    },
+    "cross_domain_extension": {
+      "unique_cases": 15,
+      "events": 300,
+      "group_1_errors": 232,
+      "group_2_errors": 0
+    }
+  },
+  "engineering_advantage_redline": {
+    "absolute_error_reduction": 0.7666666666666667,
+    "relative_error_reduction": 1.0,
+    "passed": true
+  },
+  "execution_conformance_1b": {
+    "semantic_hash_matches": 390,
+    "semantic_hash_match_rate": 1.0,
+    "envelope_hash_matches": 390,
+    "envelope_hash_match_rate": 1.0,
+    "execution_vector_matches": 390,
+    "conditional_conformance_rate": 1.0,
+    "passed": true
+  },
+  "experiment_passed": true
+}

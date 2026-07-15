@@ -33,6 +33,9 @@ population estimates. Exact machine-readable values and definitions live in
 
 - Permanent Zenodo archive (this release): [10.5281/zenodo.21361204](https://doi.org/10.5281/zenodo.21361204)
 - Zenodo concept DOI (all versions): [10.5281/zenodo.21361203](https://doi.org/10.5281/zenodo.21361203)
+- Hugging Face benchmark dataset: [`jingyongai/executable-knowledge-lifecycles-benchmark`](https://huggingface.co/datasets/jingyongai/executable-knowledge-lifecycles-benchmark)
+- Hugging Face browser-local compiler demo: [`jingyongai/executable-knowledge-compiler-demo`](https://huggingface.co/spaces/jingyongai/executable-knowledge-compiler-demo)
+- Hugging Face collection: [Executable Knowledge Lifecycles](https://huggingface.co/collections/jingyongai/executable-knowledge-lifecycles)
 - Paper: [`paper/main.pdf`](paper/main.pdf)
 - Typed-compilation metrics: [`artifacts/1a_1b_metrics.json`](artifacts/1a_1b_metrics.json)
 - Execution metrics: [`artifacts/1c_evaluation.json`](artifacts/1c_evaluation.json)
